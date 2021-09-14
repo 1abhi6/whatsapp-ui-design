@@ -1,0 +1,235 @@
+//***********************
+//***Google Font Import**
+//***********************
+
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins&family=Roboto&display=swap');
+
+
+//***********************
+//****   CSS Reset  *****
+//***********************
+
+
+* {
+	margin: 0rem;
+	padding: 0rem;
+	box-sizing: border-box;
+}
+
+
+//***********************
+//****   Variables  *****
+//***********************
+
+
+$btn_bg_color:#1ec857;
+$bg_color:#055e54;
+$font_color:#fff;
+$inactive_font_color:#8bbfbb;
+
+
+//***********************
+//****   Mixin  *********
+//*********************** 
+
+
+@mixin flex_box($dir,
+$align,
+$justify) {
+	display: flex;
+	flex-direction: $dir;
+	align-items: $align;
+	justify-content: $justify;
+}
+
+
+//***********************
+//**** Common Styling  **
+//*********************** 
+
+
+body {
+	font-size: 62.5%;
+	font-family: 'Poppins', sans-serif;
+	line-height: normal;
+	box-sizing: border-box;
+	overflow-x: hidden;
+}
+
+ul>li {
+	list-style: none;
+	margin: .3rem;
+	a {
+		font-size: 2rem;
+		color: $font_color;
+		text-decoration: none;
+		text-transform: uppercase;
+		letter-spacing: .1rem;
+		font-weight: 600;
+		i {
+			margin: 0rem 1rem;
+			font-size: 1.5rem;
+		}
+	}
+}
+
+
+//************************
+//**** Class Selector ****
+//************************
+
+
+.active {
+	border-bottom: .2rem solid $font_color;
+}
+
+.chat_nav,
+.fa-camera {
+	color: $inactive_font_color;
+}
+
+.fa-camera {
+	font-size: 2rem;
+}
+
+.head {
+	font-family: 'Roboto', sans-serif;
+}
+
+.seen {
+	color: rgb(15, 152, 206);
+}
+
+
+//***********************
+//******   Main  ********
+//*********************** 
+
+
+main {
+
+
+	//***********************
+	//****   Header  ********
+	//***********************
+    
+    
+	header {
+		@include flex_box(column,
+		center,
+		center);
+		background: $bg_color;
+		height: 10rem;
+		.header1 {
+			@include flex_box(row,
+			center,
+			space-between);
+			ul:nth-last-child(1) {
+				@include flex_box(row,
+				center,
+				flex-end);
+			}
+			ul {
+				margin: 1.5rem 4.9rem;
+				li {
+					a {
+						text-transform: capitalize;
+					}
+				}
+			}
+		}
+		.header2 {
+			ul {
+				@include flex_box(row,
+				center,
+				center);
+				li {
+					a {
+						font-size: 1rem;
+						padding: .8rem 1.8rem;
+					}
+				}
+			}
+		}
+	}
+
+
+	//***********************
+	//****   Chat section  **
+	//***********************
+
+
+	.chat_section {
+		@include flex_box(row,
+		center,
+		center);
+		.chat {
+			padding: 1rem 0rem;
+			margin: 0rem 1rem;
+			cursor: pointer;
+		}
+		.profile_pic {
+			img {
+				height: 3.5rem;
+				width: 3.5rem;
+				border-radius: 50%;
+				object-fit: cover;
+			}
+		}
+		.person_chat {
+			@include flex_box(column,
+			flex-start,
+			flex-start);
+			margin: 0.3rem 0rem;
+			p {
+				float: left;
+				font-size: 1.0rem;
+			}
+			p:first-child {
+				font-weight: bold;
+			}
+			p:nth-last-child(1) {
+				color: gray;
+			}
+		}
+		.chat_time {
+			.time {
+				font-size: .835rem;
+				color: gray;
+			}
+		}
+	}
+}
+
+
+//***********************
+//***** Media Query *****
+//*********************** 
+
+
+@media(min-width:240px) and (max-width:600px) {
+	body {
+		font-size: 60.2%;
+		width: fit-content;
+		height: fit-content;
+	}
+	ul>li {
+		list-style: none;
+		margin: auto;
+	}
+	main {
+		header {
+			@include flex_box(column,
+			normal,
+			center);
+			width: 100%;
+			.header1 {
+				ul {
+					margin: 1.5rem 2.9rem;
+					font-size: 2.4rem;
+				}
+			}
+		}
+	}
+}
